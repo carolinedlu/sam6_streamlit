@@ -5,7 +5,7 @@ from datetime import datetime
 from PIL import Image
 import time
 import os
-import cv2
+
 
 PWD = os.path.dirname(__file__)
 
@@ -71,7 +71,7 @@ def upload_file(uploaded_files):
                 data = Image.open(uploaded_file)
                 data.save(f'{save_path}/{uploaded_file.name}')
             else:
-                cv2.imwrite(save_path, bytes_data)
+                st.error("不支持该文件格式")
         placeholder_up = st.empty()
         placeholder_up.success("文件已上传！")
         time.sleep(1)

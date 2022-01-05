@@ -6,6 +6,7 @@ import time
 import os
 
 from streamlit.elements.image import image_to_url
+from streamlit_lottie import st_lottie
 
 PWD = os.path.dirname(os.path.dirname(__file__))
 
@@ -38,12 +39,12 @@ def web_loading():
 
 # 返回主页
 def web_home():
-    # 显示当前时间
-    show_datetime(0)
-    st.markdown('''---''')  # 分割线
-    st.success("# 欢迎来到智能拍照服务系统！\n"
+    st.warning("# 欢迎来到智能拍照服务系统！\n"
                "# Welcome to the Intelligent Photo Taking Service System")
     st.caption("### (基于树莓派的)")
+    st.markdown('''---''')  # 分割线
+    # 显示当前时间
+    show_datetime(0)
     p11, p12 = st.columns([3, 2])
     map_data = pandas.DataFrame(numpy.random.randn(1, 2) / [100, 100] + [30.516798, 114.363390],
                                 columns=['lat', 'lon'])
@@ -56,14 +57,14 @@ def web_home():
 
 # 智能拍照
 def intelligent_photographing():
-    c1, c2, c3, c4 = st.columns([5, 1, 3, 1])
+    c1, c3 = st.columns(2)
     with c1:
         # 网页标题
         st.warning(web_title("IP")['t'])
         st.caption(web_title("IP")['c'])
         st.markdown('''---''')  # 分割线
     with c3:
-        display_animation(1)
+        st_lottie(display_animation(1), key="1", width=750, height=225)
     # 显示当前时间
     show_datetime(1)
     st.markdown('''---''')  # 分割线
@@ -94,14 +95,14 @@ def intelligent_photographing():
 
 
 def photo_selection():
-    c1, c2, c3, c4 = st.columns([5, 1, 3, 1])
+    c1, c3 = st.columns(2)
     with c1:
         # 网页标题
         st.warning(web_title("PS")['t'])
         st.caption(web_title("PS")['c'])
         st.markdown('''---''')  # 分割线
     with c3:
-        display_animation(1)
+        st_lottie(display_animation(2), key="1", width=750, height=225)
     # 显示当前时间
     show_datetime(1)
     st.markdown('''---''')  # 分割线
@@ -144,14 +145,14 @@ def photo_selection():
 
 # 图像增强
 def photo_enhancement():
-    c1, c2, c3, c4 = st.columns([5, 1, 3, 1])
+    c1, c3 = st.columns(2)
     with c1:
         # 网页标题
         st.warning(web_title("PE")['t'])
         st.caption(web_title("PE")['c'])
         st.markdown('''---''')  # 分割线
     with c3:
-        display_animation(1)
+        st_lottie(display_animation(3), key="1", width=750, height=225)
     # 显示当前时间
     show_datetime(1)
     st.markdown('''---''')  # 分割线
@@ -178,14 +179,14 @@ def photo_enhancement():
 
 
 def my_test():
-    c1, c2, c3, c4 = st.columns([5, 1, 3, 1])
+    c1, c3 = st.columns(2)
     with c1:
         # 网页标题
         st.warning(web_title("TEST")['t'])
         st.caption(web_title("TEST")['c'])
         st.markdown('''---''')  # 分割线
     with c3:
-        display_animation(1)
+        st_lottie(display_animation(4), key="1", width=750, height=225)
     # 显示当前时间
     show_datetime(1)
     st.markdown('''---''')  # 分割线

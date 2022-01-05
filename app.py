@@ -1,9 +1,10 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+from streamlit_lottie import st_lottie
 
 import os
 from apps import home
-
+from myfunctions import display_animation
 
 PWD = os.path.dirname(__file__)
 
@@ -27,6 +28,7 @@ def main():
 
     # 检测用户选择的服务状态
     with st.sidebar:
+        st_lottie(display_animation(0), key="0", width=300, height=200)
         st.success("# 智能拍照服务系统\n"
                    "# Intelligent Photo Taking Service System")
         selected = option_menu("Main Menu",

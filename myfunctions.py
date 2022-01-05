@@ -32,9 +32,9 @@ def web_title(s0):
 def show_datetime(x):
     if x == 0:
         t11, t12, t13 = st.columns(3)
-        t11.warning('## ' + datetime.now().strftime("%Y-%m-%d"))
-        t12.warning('## ' + datetime.now().strftime("%A"))
-        t13.warning('## ' + datetime.now().strftime("%X"))
+        t11.success('## ' + datetime.now().strftime("%Y-%m-%d"))
+        t12.success('## ' + datetime.now().strftime("%A"))
+        t13.success('## ' + datetime.now().strftime("%X"))
     elif x == 1:
         a11, a12, a13, a14 = st.columns([2, 2, 2, 6])
         a11.success('##### ' + datetime.now().strftime("%Y-%m-%d"))
@@ -139,10 +139,20 @@ def display_url_video(src):
     # )
 
 
-def display_animation(key):
+@st.experimental_memo
+def display_animation(nums):
     file = ""
-    if key == 1:
+    if nums == 0:
+        file = "test/animation/31675-programming.json"
+    if nums == 1:
         file = "test/animation/88282-rocket.json"
+    if nums == 2:
+        file = "test/animation/15597-boots-your-site.json"
+    if nums == 3:
+        file = "test/animation/4126-indian-neighborhood.json"
+    if nums == 4:
+        file = "test/animation/7192-404.json"
     with open(file, "r", errors='ignore') as f:
         data = json.load(f)
-        st_lottie(data, key="1", width=500, height=250)
+        return data
+        # st_lottie(data, key="1", width=500, height=250)

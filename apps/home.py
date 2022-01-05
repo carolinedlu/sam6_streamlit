@@ -122,8 +122,10 @@ def photo_selection():
         # 计算等待
         placeholder = st.empty()
         with st.spinner('### 计算中...'):
-            os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py"))
+            time.sleep(2)
+            # os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py"))
         placeholder.success('Done!')
+        time.sleep(1)
         placeholder.empty()
         # 计算完成，展示结果
         t11, t12 = st.columns(2)

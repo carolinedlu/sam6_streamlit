@@ -149,7 +149,7 @@ def display_animation(nums):
     if nums == 2:
         file = "test/animation/15597-boots-your-site.json"
     if nums == 3:
-        file = "test/animation/4126-indian-neighborhood.json"
+        file = "test/animation/16949-placeholder-day-night.json"
     if nums == 4:
         file = "test/animation/7192-404.json"
     with open(file, "r", errors='ignore') as f:

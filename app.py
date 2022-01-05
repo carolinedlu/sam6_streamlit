@@ -1,8 +1,9 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 
-from myfunctions import *
+import os
 from apps import home
+
 
 PWD = os.path.dirname(__file__)
 

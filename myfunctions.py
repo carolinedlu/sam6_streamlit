@@ -1,11 +1,14 @@
 import streamlit as st
 import streamlit.components.v1 as components
+from streamlit_lottie import st_lottie
 
 from datetime import datetime
 from PIL import Image
 import time
+import json
 import os
 
+# import cv2
 
 PWD = os.path.dirname(__file__)
 
@@ -64,14 +67,15 @@ def upload_file(uploaded_files):
             # bytes_data = uploaded_file.read()
             # st.write("文件名:", uploaded_file.name)
             # st.write(bytes_data)  # 这里会卡死
-            st.write("文件名:", uploaded_file.name)
+            # st.write("文件名:", uploaded_file.name)
             save_path = os.path.join(PWD, 'test/upload')
-            bytes_data = cv2.imread(os.path.join(PWD, 'test/images', uploaded_file.name), 1)
+            # bytes_data = cv2.imread(os.path.join(PWD, 'test/images', uploaded_file.name), 1)
             if uploaded_file.name.split('.')[1] in ['jpg', 'png', 'JPG', 'PNG']:
                 data = Image.open(uploaded_file)
                 data.save(f'{save_path}/{uploaded_file.name}')
             else:
                 st.error("不支持该文件格式")
+                # cv2.imwrite(save_path, bytes_data)
         placeholder_up = st.empty()
         placeholder_up.success("文件已上传！")
         time.sleep(1)
@@ -133,3 +137,12 @@ def display_url_video(src):
     #     """ % m3u8_url,
     #     width=1440, height=1280
     # )
+
+
+def display_animation(key):
+    file = ""
+    if key == 1:
+        file = "test/animation/88282-rocket.json"
+    with open(file, "r", errors='ignore') as f:
+        data = json.load(f)
+        st_lottie(data, key="1", width=500, height=250)

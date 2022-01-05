@@ -5,7 +5,20 @@ import pandas
 import time
 import os
 
+from streamlit.elements.image import image_to_url
+
 PWD = os.path.dirname(os.path.dirname(__file__))
+
+
+def background():
+    photo_path = os.path.join(PWD, 'test/images/mountain.jpg')
+    # 加载背景图
+    img_url = image_to_url(photo_path, width=1280, clamp=False, channels='RGB', output_format='auto',
+                           image_id='', allow_emoji=False)
+    st.markdown('''
+    <style>
+    .css-fg4pbf {background-image: url(''' + img_url + ''');}</style>
+    ''', unsafe_allow_html=True)
 
 
 # 网页加载等待页面
@@ -43,10 +56,14 @@ def web_home():
 
 # 智能拍照
 def intelligent_photographing():
-    # 网页标题
-    st.warning(web_title("IP")['t'])
-    st.caption(web_title("IP")['c'])
-    st.markdown('''---''')  # 分割线
+    c1, c2, c3, c4 = st.columns([5, 1, 3, 1])
+    with c1:
+        # 网页标题
+        st.warning(web_title("IP")['t'])
+        st.caption(web_title("IP")['c'])
+        st.markdown('''---''')  # 分割线
+    with c3:
+        display_animation(1)
     # 显示当前时间
     show_datetime(1)
     st.markdown('''---''')  # 分割线
@@ -63,26 +80,28 @@ def intelligent_photographing():
     with col2:
         # 上传多个文件 Upload multi files
         st.info("上传文件")
-        up_loaded_files = st.file_uploader(label="请选择上传文件（upload）", type='jpg,png,and so on',
-                                           accept_multiple_files=True,
+        up_loaded_files = st.file_uploader(label="请选择上传文件（upload）", accept_multiple_files=True,
                                            help="选择您想要上传的文件")
         if st.button("开始上传文件"):
             upload_file(up_loaded_files)
 
         # 下载单个文件
         st.info("下载文件")
-        down_loaded_files = st.file_uploader(label="请选择下载文件（download）", type='jpg,png,and so on',
-                                             accept_multiple_files=False,
+        down_loaded_files = st.file_uploader(label="请选择下载文件（download）", accept_multiple_files=False,
                                              help="选择您想要下载的文件")
         if st.button("确认"):
             download_file(down_loaded_files)
 
 
 def photo_selection():
-    # 网页标题
-    st.warning(web_title("PS")['t'])
-    st.caption(web_title("PS")['c'])
-    st.markdown('''---''')  # 分割线
+    c1, c2, c3, c4 = st.columns([5, 1, 3, 1])
+    with c1:
+        # 网页标题
+        st.warning(web_title("PS")['t'])
+        st.caption(web_title("PS")['c'])
+        st.markdown('''---''')  # 分割线
+    with c3:
+        display_animation(1)
     # 显示当前时间
     show_datetime(1)
     st.markdown('''---''')  # 分割线
@@ -97,7 +116,7 @@ def photo_selection():
         # 计算等待
         placeholder = st.empty()
         with st.spinner('### 计算中...'):
-            os.system("python D:/python61/pycharm_code/streamlit61/xcc_ps/al_select.py")
+            os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py"))
         placeholder.success('Done!')
         placeholder.empty()
         # 计算完成，展示结果
@@ -123,31 +142,48 @@ def photo_selection():
 
 # 图像增强
 def photo_enhancement():
-    # 网页标题
-    st.warning(web_title("PE")['t'])
-    st.caption(web_title("PE")['c'])
-    st.markdown('''---''')  # 分割线
+    c1, c2, c3, c4 = st.columns([5, 1, 3, 1])
+    with c1:
+        # 网页标题
+        st.warning(web_title("PE")['t'])
+        st.caption(web_title("PE")['c'])
+        st.markdown('''---''')  # 分割线
+    with c3:
+        display_animation(1)
     # 显示当前时间
     show_datetime(1)
     st.markdown('''---''')  # 分割线
+    st.error("#### 该功能尚在调试中")
+    # 上传多个文件 Upload multi files
+    st.info("上传文件")
+    up_loaded_files = st.file_uploader(label="请选择上传文件（upload）", accept_multiple_files=False,
+                                       help="选择您想要上传的文件")
     if st.button(label="开始增强(Go Enhancement)"):
-        # 计算等待
-        placeholder = st.empty()
-        with st.spinner('### 计算中...'):
-            time.sleep(1)
-        placeholder.success('Done!')
-        placeholder.empty()
-        c1, c2 = st.columns(2)
-        c1.info("# Before")
-        c2.info("# After")
-        st.image(show_image("dped/input/pic1.png"), caption='This is a test')
+        if up_loaded_files:
+            # 计算等待
+            placeholder = st.empty()
+            with st.spinner('### 计算中...'):
+                # 这里以后加上运行命令
+                time.sleep(1)
+            placeholder.success('Done!')
+            placeholder.empty()
+            c1, c2 = st.columns(2)
+            c1.info("# Before")
+            c2.info("# After")
+            st.image("dped/output/pic1.png", caption='This is a test')
+        else:
+            st.error("#### 您还未选择文件")
 
 
 def my_test():
-    # 网页标题
-    st.warning(web_title("TEST")['t'])
-    st.caption(web_title("TEST")['c'])
-    st.markdown('''---''')  # 分割线
+    c1, c2, c3, c4 = st.columns([5, 1, 3, 1])
+    with c1:
+        # 网页标题
+        st.warning(web_title("TEST")['t'])
+        st.caption(web_title("TEST")['c'])
+        st.markdown('''---''')  # 分割线
+    with c3:
+        display_animation(1)
     # 显示当前时间
     show_datetime(1)
     st.markdown('''---''')  # 分割线

@@ -115,8 +115,11 @@ def download_file(down_loaded_files):
         placeholder.empty()
 
 
-def display_url_video(src):
-    components.iframe(src=src, width=640, height=480, scrolling=True)
+def display_url_video(src, status):
+    if status == 0:
+        components.iframe(src=src, width=640, height=480, scrolling=True)
+    elif status == 1:
+        components.iframe(src=src, width=1440, height=1080, scrolling=True)
     # m3u8_url = 'https://new.iskcd.com/20211108/emE2oR9c/1400kb/hls/index.m3u8'
     # components.html(
     #     """
@@ -155,4 +158,3 @@ def display_animation(nums):
     with open(file, "r", errors='ignore') as f:
         data = json.load(f)
         return data
-        # st_lottie(data, key="1", width=500, height=250)

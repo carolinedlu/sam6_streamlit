@@ -77,7 +77,7 @@ def intelligent_photographing():
             # st.image(show_image("test/images/background.png"), caption='This is a test', width=800)
             # st.video(data=show_video("test/videos/02.mp4"), format='video/mp4')
             # display_url_video('http://192.168.1.106:8080/?action=stream')
-            display_url_video('https://www.bilibili.com/')
+            display_url_video('https://www.bilibili.com/', 0)
     with col2:
         # 上传多个文件 Upload multi files
         st.info("上传文件")
@@ -196,4 +196,4 @@ def my_test():
     with c12:
         url = c12.text_input("输入链接")
     if url:
-        display_url_video(url)
+        display_url_video(url, 1)

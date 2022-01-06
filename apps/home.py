@@ -106,26 +106,13 @@ def photo_selection():
     # 显示当前时间
     show_datetime(1)
     st.markdown('''---''')  # 分割线
-    # 原始图片路径
-    ps_path = os.path.join(PWD, "xcc_ps/data/61")
-    ls = os.listdir(ps_path)
-    c_path = []
-    for i in ls:
-        c_path.append(os.path.join(ps_path, i))
-    # 增强后图片路径
-    psed_path = os.path.join(PWD, "xcc_ps/output")
-    ls1 = os.listdir(psed_path)
-    c1_path = []
-    for i in ls1:
-        c1_path.append(os.path.join(psed_path, i))
     # 展示结果
     if st.button(label="开始挑选(Go Selection)"):
         # 计算等待
         placeholder = st.empty()
-        with st.spinner('### 计算中...'):
-            # time.sleep(2)
-            os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py"))
-        placeholder.success('Done!')
+        placeholder.info("#### 正在计算中...")
+        os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py"))
+        placeholder.success('#### Done!')
         time.sleep(1)
         placeholder.empty()
         # 计算完成，展示结果
@@ -133,11 +120,23 @@ def photo_selection():
         p11, p12 = st.columns([1, 1])
         t11.info("#### 输入图像")
         t12.info("#### 最佳图像")
+        # 原始图片路径
+        ps_path = os.path.join(PWD, "xcc_ps/data/61")
+        ls = os.listdir(ps_path)
+        c_path = []
+        for i in ls:
+            c_path.append(os.path.join(ps_path, i))
         # 原始输入图片
         with t11:
             for x in c_path:
                 p11.image(show_select_image(x), width=450)
         # 最佳图像
+        # 增强后图片路径
+        psed_path = os.path.join(PWD, "xcc_ps/output")
+        ls1 = os.listdir(psed_path)
+        c1_path = []
+        for i in ls1:
+            c1_path.append(os.path.join(psed_path, i))
         with t12:
             for x in c1_path:
                 p12.image(show_select_image(x), width=450)

@@ -1,6 +1,6 @@
 # 2021.4.27版本(test_xcc.py)
 
-import cv2
+# import cv2
 import os
 import torch
 import time
@@ -85,7 +85,7 @@ if __name__ == "__main__":
         name_in = result_rev[i][0]
         name_out = 'out' + result_rev[i][0]
         shutil.copy(Pic_Path + name_in, Pic_outPath + name_out)
-        img[i] = cv2.imread(Pic_outPath + name_out)
+        # img[i] = cv2.imread(Pic_outPath + name_out)
 
     stop = time.perf_counter()
     print('模型计算耗时{:.2f}s,项目总耗时{:.2f}s'.format((model_stop - start), (stop - start)))

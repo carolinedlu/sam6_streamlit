@@ -112,7 +112,7 @@ def photo_selection():
         # 计算等待
         placeholder = st.empty()
         placeholder.info("#### 正在计算中...")
-#         time.sleep(2)
+        time.sleep(2)
     #    os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py")) -- this line is causing the Torch error
         placeholder.success('#### Done!')
         time.sleep(1)

@@ -20,9 +20,9 @@ from models.ResNet18 import make_network
 # os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
-Pic_Path = r'D:/python61/pycharm_code/streamlit61/data/61/'
-Pic_outPath = r'D:/python61/pycharm_code/streamlit61/output/'
-Model_Path = r'D:/python61/pycharm_code/streamlit61/50.pkl'
+Pic_Path = r'D:/python61/pycharm_code/streamlit61/xcc_ps/data/61/'
+Pic_outPath = r'D:/python61/pycharm_code/streamlit61/xcc_ps/output/'
+Model_Path = r'D:/python61/pycharm_code/streamlit61/xcc_ps/50.pkl'
 
 
 def del_file(path):

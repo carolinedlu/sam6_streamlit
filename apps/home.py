@@ -112,7 +112,7 @@ def photo_selection():
         placeholder = st.empty()
         placeholder.info("#### 正在计算中...")
         time.sleep(2)
-        # os.system("python " + os.path.join(PWD, "al_select.py"))
+        # os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py"))
         placeholder.success('#### Done!')
         time.sleep(1)
         placeholder.empty()
@@ -122,7 +122,7 @@ def photo_selection():
         t11.info("#### 输入图像")
         t12.info("#### 最佳图像")
         # 原始图片路径
-        ps_path = os.path.join(PWD, "data/61")
+        ps_path = os.path.join(PWD, "xcc_ps/data/61")
         ls = os.listdir(ps_path)
         c_path = []
         for i in ls:
@@ -133,7 +133,7 @@ def photo_selection():
                 p11.image(show_select_image(x), width=450)
         # 最佳图像
         # 增强后图片路径
-        psed_path = os.path.join(PWD, "output")
+        psed_path = os.path.join(PWD, "xcc_ps/output")
         ls1 = os.listdir(psed_path)
         c1_path = []
         for i in ls1:

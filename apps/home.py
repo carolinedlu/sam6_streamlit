@@ -4,6 +4,7 @@ import numpy
 import pandas
 import time
 import os
+import torch
 
 from streamlit.elements.image import image_to_url
 from streamlit_lottie import st_lottie

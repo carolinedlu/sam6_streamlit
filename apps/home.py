@@ -123,8 +123,8 @@ def photo_selection():
         # 计算等待
         placeholder = st.empty()
         with st.spinner('### 计算中...'):
-            time.sleep(2)
-            # os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py"))
+            # time.sleep(2)
+            os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py"))
         placeholder.success('Done!')
         time.sleep(1)
         placeholder.empty()

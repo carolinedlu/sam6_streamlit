@@ -7,6 +7,7 @@ from PIL import Image
 import time
 import json
 import os
+import torch
 
 # import cv2
 

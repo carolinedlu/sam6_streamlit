@@ -111,7 +111,7 @@ def photo_selection():
         # 计算等待
         placeholder = st.empty()
         placeholder.info("#### 正在计算中...")
-        os.system("python " + os.path.join(PWD, "xcc_ps/al_select.py"))
+        os.system("python " + os.path.join(PWD, "al_select.py"))
         placeholder.success('#### Done!')
         time.sleep(1)
         placeholder.empty()
